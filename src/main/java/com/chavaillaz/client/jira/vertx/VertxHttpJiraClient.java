@@ -9,6 +9,7 @@ import com.chavaillaz.client.jira.api.IssueApi;
 import com.chavaillaz.client.jira.api.ProjectApi;
 import com.chavaillaz.client.jira.api.SearchApi;
 import com.chavaillaz.client.jira.api.UserApi;
+import com.chavaillaz.client.jira.api.VersionApi;
 import com.chavaillaz.client.jira.domain.Issue;
 import com.chavaillaz.client.jira.domain.Issues;
 import io.vertx.core.Vertx;
@@ -63,6 +64,11 @@ public class VertxHttpJiraClient<I extends Issue> extends AbstractJiraClient<Web
     @Override
     public SearchApi<Issues<I>> getSearchApi() {
         return searchApi.get(() -> new VertxHttpSearchApi<>(newHttpClient(), baseUrl + BASE_API, authentication, issuesListType));
+    }
+
+    @Override
+    public VersionApi getVersionApi() {
+        return versionApi.get(() -> new VertxHttpVersionApi(newHttpClient(), baseUrl + BASE_API, authentication));
     }
 
 

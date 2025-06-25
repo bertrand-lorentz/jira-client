@@ -6,6 +6,7 @@ import com.chavaillaz.client.jira.api.IssueApi;
 import com.chavaillaz.client.jira.api.ProjectApi;
 import com.chavaillaz.client.jira.api.SearchApi;
 import com.chavaillaz.client.jira.api.UserApi;
+import com.chavaillaz.client.jira.api.VersionApi;
 import com.chavaillaz.client.jira.domain.Issue;
 import com.chavaillaz.client.jira.domain.Issues;
 import com.chavaillaz.client.jira.java.JavaHttpJiraClient;
@@ -77,5 +78,12 @@ public interface JiraClient<I extends Issue> extends Client<JiraClient<I>> {
      * @return The project client
      */
     UserApi getUserApi();
+
+    /**
+     * Gets the version API.
+     *
+     * @return The version client
+     */
+    VersionApi getVersionApi();
 
 }

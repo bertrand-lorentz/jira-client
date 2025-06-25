@@ -9,6 +9,7 @@ import com.chavaillaz.client.jira.api.IssueApi;
 import com.chavaillaz.client.jira.api.ProjectApi;
 import com.chavaillaz.client.jira.api.SearchApi;
 import com.chavaillaz.client.jira.api.UserApi;
+import com.chavaillaz.client.jira.api.VersionApi;
 import com.chavaillaz.client.jira.domain.Issue;
 import com.chavaillaz.client.jira.domain.Issues;
 import okhttp3.OkHttpClient;
@@ -48,6 +49,11 @@ public class OkHttpJiraClient<I extends Issue> extends AbstractJiraClient<OkHttp
     @Override
     public SearchApi<Issues<I>> getSearchApi() {
         return searchApi.get(() -> new OkHttpSearchApi<>(newHttpClient(), baseUrl + BASE_API, authentication, issuesListType));
+    }
+
+    @Override
+    public VersionApi getVersionApi() {
+        return versionApi.get(() -> new OkHttpVersionApi(newHttpClient(), baseUrl + BASE_API, authentication));
     }
 
 }
