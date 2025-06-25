@@ -9,6 +9,7 @@ import com.chavaillaz.client.jira.api.IssueApi;
 import com.chavaillaz.client.jira.api.ProjectApi;
 import com.chavaillaz.client.jira.api.SearchApi;
 import com.chavaillaz.client.jira.api.UserApi;
+import com.chavaillaz.client.jira.api.VersionApi;
 import com.chavaillaz.client.jira.domain.Issue;
 import com.chavaillaz.client.jira.domain.Issues;
 import org.apache.hc.client5.http.impl.async.CloseableHttpAsyncClient;
@@ -48,6 +49,11 @@ public class ApacheHttpJiraClient<I extends Issue> extends AbstractJiraClient<Cl
     @Override
     public SearchApi<Issues<I>> getSearchApi() {
         return searchApi.get(() -> new ApacheHttpSearchApi<>(newHttpClient(), baseUrl + BASE_API, authentication, issuesListType));
+    }
+
+    @Override
+    public VersionApi getVersionApi() {
+        return versionApi.get(() -> new ApacheHttpVersionApi(newHttpClient(), baseUrl + BASE_API, authentication));
     }
 
 }

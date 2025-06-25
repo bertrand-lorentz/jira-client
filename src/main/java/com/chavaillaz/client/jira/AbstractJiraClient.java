@@ -6,6 +6,7 @@ import com.chavaillaz.client.jira.api.IssueApi;
 import com.chavaillaz.client.jira.api.ProjectApi;
 import com.chavaillaz.client.jira.api.SearchApi;
 import com.chavaillaz.client.jira.api.UserApi;
+import com.chavaillaz.client.jira.api.VersionApi;
 import com.chavaillaz.client.jira.domain.Issue;
 import com.chavaillaz.client.jira.domain.Issues;
 import com.fasterxml.jackson.databind.JavaType;
@@ -24,6 +25,7 @@ public abstract class AbstractJiraClient<C, I extends Issue> extends AbstractCli
     protected final LazyCachedObject<ProjectApi> projectApi = new LazyCachedObject<>();
     protected final LazyCachedObject<SearchApi<Issues<I>>> searchApi = new LazyCachedObject<>();
     protected final LazyCachedObject<UserApi> userApi = new LazyCachedObject<>();
+    protected final LazyCachedObject<VersionApi> versionApi = new LazyCachedObject<>();
 
     protected final Class<I> issueType;
     protected final JavaType issuesListType;
