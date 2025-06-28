@@ -38,12 +38,12 @@
     <properties>
         <common-client.version>2.1.4</common-client.version>
         <httpclient5.version>5.5</httpclient5.version>
-        <junit-bom.version>5.13.1</junit-bom.version>
-        <log4j-bom.version>2.24.3</log4j-bom.version>
+        <junit-bom.version>5.13.2</junit-bom.version>
+        <log4j-bom.version>2.25.0</log4j-bom.version>
         <lombok.version>1.18.38</lombok.version>
         <okhttp.version>4.12.0</okhttp.version>
         <slf4j-api.version>2.0.17</slf4j-api.version>
-        <vertx-web-client.version>4.5.15</vertx-web-client.version>
+        <vertx-web-client.version>4.5.16</vertx-web-client.version>
     </properties>
 
     <dependencyManagement>
