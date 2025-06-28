@@ -183,9 +183,11 @@ It requires the following dependency:
   - `getUserOptional(String username)`
   - `getCurrentUser()`
 - **[VersionApi](src/main/java/com/chavaillaz/client/jira/api/VersionApi.java) -
-  A few operations for versions**
+  Everything for versions**
+  - `addVersion(Version version)`
   - `getVersion(String versionId)`
   - `updateVersion(Version version)`
+  - `deleteVersion(String versionId)`
 
 ### Client instantiation
 

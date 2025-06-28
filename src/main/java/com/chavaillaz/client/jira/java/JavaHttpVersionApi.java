@@ -1,5 +1,7 @@
 package com.chavaillaz.client.jira.java;
 
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+
 import java.net.http.HttpClient;
 import java.util.concurrent.CompletableFuture;
 
@@ -21,6 +23,11 @@ public class JavaHttpVersionApi extends AbstractJavaHttpClient implements Versio
     }
 
     @Override
+    public CompletableFuture<Version> addVersion(Version version) {
+        return sendAsync(requestBuilder(URL_VERSION, EMPTY).POST(body(version)), Version.class);
+    }
+
+    @Override
     public CompletableFuture<Version> getVersion(String versionId) {
         return sendAsync(requestBuilder(URL_VERSION, versionId).GET(), Version.class);
     }
@@ -28,6 +35,11 @@ public class JavaHttpVersionApi extends AbstractJavaHttpClient implements Versio
     @Override
     public CompletableFuture<Version> updateVersion(Version version) {
         return sendAsync(requestBuilder(URL_VERSION, version.getId()).PUT(body(version)), Version.class);
+    }
+
+    @Override
+    public CompletableFuture<Void> deleteVersion(String versionId) {
+        return sendAsync(requestBuilder(URL_VERSION, versionId).DELETE(), Void.class);
     }
 
 }

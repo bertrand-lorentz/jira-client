@@ -1,7 +1,10 @@
 package com.chavaillaz.client.jira.vertx;
 
+import static io.vertx.core.http.HttpMethod.DELETE;
 import static io.vertx.core.http.HttpMethod.GET;
+import static io.vertx.core.http.HttpMethod.POST;
 import static io.vertx.core.http.HttpMethod.PUT;
+import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -24,6 +27,11 @@ public class VertxHttpVersionApi extends AbstractVertxHttpClient implements Vers
     }
 
     @Override
+    public CompletableFuture<Version> addVersion(Version version) {
+        return handleAsync(requestBuilder(POST, URL_VERSION, EMPTY).sendBuffer(body(version)), Version.class);
+    }
+
+    @Override
     public CompletableFuture<Version> getVersion(String versionId) {
         return handleAsync(requestBuilder(GET, URL_VERSION, versionId).send(), Version.class);
     }
@@ -31,6 +39,11 @@ public class VertxHttpVersionApi extends AbstractVertxHttpClient implements Vers
     @Override
     public CompletableFuture<Version> updateVersion(Version version) {
         return handleAsync(requestBuilder(PUT, URL_VERSION, version.getId()).sendBuffer(body(version)), Version.class);
+    }
+
+    @Override
+    public CompletableFuture<Void> deleteVersion(String versionId) {
+        return handleAsync(requestBuilder(DELETE, URL_VERSION, versionId).send(), Void.class);
     }
 
 }

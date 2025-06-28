@@ -1,5 +1,7 @@
 package com.chavaillaz.client.jira.okhttp;
 
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+
 import java.util.concurrent.CompletableFuture;
 
 import com.chavaillaz.client.common.security.Authentication;
@@ -19,6 +21,12 @@ public class OkHttpVersionApi extends AbstractOkHttpClient implements VersionApi
     public OkHttpVersionApi(OkHttpClient client, String baseUrl, Authentication authentication) {
         super(client, baseUrl, authentication);
     }
+
+    @Override
+    public CompletableFuture<Version> addVersion(Version version) {
+        return sendAsync(requestBuilder(URL_VERSION, EMPTY).post(body(version)), Version.class);
+    }
+
     @Override
     public CompletableFuture<Version> getVersion(String versionId) {
         return sendAsync(requestBuilder(URL_VERSION, versionId).get(), Version.class);
@@ -27,6 +35,11 @@ public class OkHttpVersionApi extends AbstractOkHttpClient implements VersionApi
     @Override
     public CompletableFuture<Version> updateVersion(Version version) {
         return sendAsync(requestBuilder(URL_VERSION, version.getId()).put(body(version)), Version.class);
+    }
+
+    @Override
+    public CompletableFuture<Void> deleteVersion(String versionId) {
+        return sendAsync(requestBuilder(URL_VERSION, versionId).delete(), Void.class);
     }
 
 }
