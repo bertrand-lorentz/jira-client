@@ -36,10 +36,10 @@
     </licenses>
 
     <properties>
-        <common-client.version>2.1.4</common-client.version>
+        <common-client.version>2.1.5</common-client.version>
         <httpclient5.version>5.5</httpclient5.version>
-        <junit-bom.version>5.13.2</junit-bom.version>
-        <log4j-bom.version>2.25.0</log4j-bom.version>
+        <junit-bom.version>5.13.3</junit-bom.version>
+        <log4j-bom.version>2.25.1</log4j-bom.version>
         <lombok.version>1.18.38</lombok.version>
         <okhttp.version>4.12.0</okhttp.version>
         <slf4j-api.version>2.0.17</slf4j-api.version>
@@ -192,7 +192,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.5.0</version>
+                <version>3.6.0</version>
                 <executions>
                     <execution>
                         <id>enforce-maven</id>
@@ -246,7 +246,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>3.2.7</version>
+                        <version>3.2.8</version>
                         <configuration>
                             <!-- Prevent gpg from using pinentry programs -->
                             <gpgArguments>
